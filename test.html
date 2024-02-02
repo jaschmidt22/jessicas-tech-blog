@@ -33,6 +33,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Dashboard</a>
               </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="#">Log In</a>
               </li>
@@ -44,5 +45,217 @@
         </div>
       </nav>
     </header>
+    <div class="container" style="margin-bottom: 15px">{{{body}}}</div>
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+    <script
+      script
+      src="https:xxxxx.xxxxxxxx.xxxxxxxxxxxxxxxxx@x.x.xxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxx.xxx.xx"
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    ></script>
   </body>
 </html>
+<main class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">Dashboard</h1>
+      <a href="/newpost" class="btn btn-primary">Create a New Blog Post</a>
+    </div>
+  </div>
+  <br>
+  <h1 class="mb-4">Tech Blog Contributions:</h1>
+  {{#each posts}}
+    <div class="post-container post mb-3">
+      <h2><a href="/post/{{id}}" class="text-decoration-none text-reset">{{title}}</a></h2>
+      <p>Created by: {{user.username}} | Date: {{format_date}}</p>
+      <a href="/editpost/{{id}}" class="btn btn-warning">Edit Post</a>
+      <button class="btn btn-danger delete-post" data-post-id="{{id}}">Delete</button>
+    </div>
+  {{/each}}
+</main>
+<class="container mt-5">
+  <h1 class="mb-4">Edit Post</h1>
+  <form class="update-post-form" class="mb-3">
+    <div class="mb-3">
+      <label for="title-update-post" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title-update-post"
+        placeholder="Enter post title"
+        value="{{title}}"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="content-update-post" class="form-label">Content</label>
+      <textarea
+        class="form-control"
+        id="content-update-post"
+        rows="3"
+        placeholder="Enter post content"
+      >{{content}}</textarea>
+    </div>
+    <button type="submit" id="update-post" class="btn btn-primary">Update Post</button>
+    <button type="button" id="delete-post" class="btn btn-danger">Delete Post</button>
+  </form>
+</main>
+
+<main class="container mt-5">
+  <h1 class="mb-4 text-white">Tech Blog Posts</h1>
+  <div class="row">
+    {{#each posts}}
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-header bg-warning">
+            <h2 class="card-title">
+              <a href="/post/{{id}}" class="text-dark">{{title}}</a>
+            </h2>
+          </div>
+          <div class="card-body text-dark">
+            <p>Created by: {{user.username}} Date: {{format_date}}</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</main>
+
+<main class="container mt-5">
+  <h1 class="mb-4">Login</h1>
+  <form class="login-form">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username-login"
+        placeholder="Username"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password-login"
+        placeholder="Password"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+
+</main>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Create a Blog Post</h2>
+  <form class="new-post-form">
+    <div class="mb-3">
+      <label for="title-new-post" class="form-label">Title:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title-new-post"
+        placeholder="Enter a title of your choice"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="content-new-post" class="form-label">Content:</label>
+      <textarea
+        class="form-control"
+        id="content-new-post"
+        rows="5"
+        placeholder="Enter content here"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary">Create Post</button>
+    </div>
+  </form>
+</div>
+<main class="container mt-5">
+  <article>
+    <h1>{{title}}</h1>
+    <p>Created by: {{user.username}} | Date: {{format_date}}</p>
+    <p>{{content}}</p>
+  </article>
+  {{#if logged_in}}
+    <form class="new-chess-comment-form" class="mb-3">
+      <div class="mb-3">
+        <label for="comment" class="form-label">Add Comment:</label>
+        <textarea
+          class="form-control"
+          id="content-new-chess-comment"
+          rows="3"
+          placeholder="Add a comment..."
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/if}}
+  <h2>Comment History:</h2>
+  {{#each comments}}
+    <div class="comment mb-3">
+      <p>{{comment_text}}</p>
+      <p>By {{user.username}} on {{format_date}}</p>
+    </div>
+  {{/each}}
+</main>
+<main class="container mt-5">
+  <h1 class="mb-4">Sign Up</h1>
+  <form id="signup-form" class="signup-form">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Username"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password must be at least 8 characters long"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+  </form>
+</main>
+<main class="container mt-5">
+  <article>
+    <h1>{{title}}</h1>
+    <p>Created by: {{user.username}} | Date: {{format_date}}</p>
+    <p>{{content}}</p>
+  </article>
+  {{#if logged_in}}
+    <form class="new-comment-form" class="mb-3">
+      <div class="mb-3">
+        <label for="comment" class="form-label">Add Comment:</label>
+        <textarea
+          class="form-control"
+          id="content-new comment"
+          rows="3"
+          placeholder="Your comment..."
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/if}}
+  <h2>Comment History:</h2>
+  {{#each comments}}
+    <div class="comment mb-3">
+      <p>{{comment_text}}</p>
+      <p>By {{user.username}} on {{format_date}}</p>
+    </div>
+  {{/each}}
+</main>
