@@ -38,14 +38,14 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 //use session middleware to create session object and store
-// app.use(
-//   session({
-//     secret: process.env.SECRET,
-//     store: new SequelizeStore({ db: sequelize }),
-//     resave: false,
-//     saveUninitialized: false,
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SECRET,
+    store: new SequelizeStore({ db: sequelize }),
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 //use routes from controller
 app.use(routes);
 //sync sequelize models with database and start server
