@@ -1,6 +1,6 @@
 //import necessary modules
 const router = require("express").Router();
-const { User } = require("../../models/index");
+const { User } = require("../../models");
 
 //route to get all users
 router.get("/", (req, res) => {
