@@ -18,7 +18,12 @@ const hbs = exphbs.create({ helpers });
 //Set up session object with secret, cookie, and store
 const sess = {
   secret: "Super secret secret",
-  cookie: {},
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: "strict",
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -48,6 +53,7 @@ app.use(
 );
 //use routes from controller
 app.use(routes);
+
 //sync sequelize models with database and start server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
