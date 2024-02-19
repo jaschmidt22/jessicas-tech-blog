@@ -27,7 +27,7 @@ router.get("/:id", async (req, res) => {
       ],
     });
     if (!postData) {
-      res.status(404).json({ message: "No post found with that id!" });
+      res.status(404).json({ message: "No post found with that id" });
       return;
     }
     res.status(200).json(postData);
@@ -55,7 +55,7 @@ router.put("/:id", withAuth, async (req, res) => {
     });
 
     if (!updatedPost) {
-      res.status(404).json({ message: "No post found with that id!" });
+      res.status(404).json({ message: "No post found with that id" });
       return;
     }
     res.status(200).json(updatedPost);
@@ -76,7 +76,7 @@ router.delete("/:id", withAuth, async (req, res) => {
     });
 
     if (!deletedPost) {
-      res.status(404).json({ message: "No post found with that id!" });
+      res.status(404).json({ message: "No post found with that id" });
       return;
     }
     res.status(200).json(deletedPost);

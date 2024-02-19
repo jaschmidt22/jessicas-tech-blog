@@ -1,29 +1,21 @@
 //Importing required dependencies
-const path = require("path");
 const express = require("express");
 const session = require("express-session");
 const routes = require("./controllers");
 const exphbs = require("express-handlebars");
-const helpers = require("./utils/helpers");
+const hbs = exphbs.create({ helpers: require("./utils/helpers") });
 
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
 //Creating express app and setting port
-
-const PORT = process.env.PORT || 3001;
 const app = express();
-
-const hbs = exphbs.create({ helpers });
+const PORT = process.env.PORT || 3001;
 
 //Set up session object with secret, cookie, and store
 const sess = {
   secret: "Super secret secret",
-  cookie: {
-    maxAge: 300000,
-    httpOnly: true,
-    secure: false,
-    sameSite: "strict",
-  },
+  cookie: {},
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
@@ -31,7 +23,7 @@ const sess = {
   }),
 };
 
-//use session middleware
+//using session middleware
 app.use(session(sess));
 
 //parse incoming JSON and URL-encoded data
@@ -51,7 +43,8 @@ app.use(
     saveUninitialized: false,
   })
 );
-//use routes from controller
+
+//use controller routes
 app.use(routes);
 
 //sync sequelize models with database and start server
