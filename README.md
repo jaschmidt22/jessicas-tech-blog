@@ -16,7 +16,7 @@ I was given the task of building a CMS-style blog site similar to a Wordpress si
 
 Once you navigate to the deployed site at you will see some existing blog posts on the homepage. Then click the 'sign-up' link and enter your username, e-mail and desired password. Your information will be saved in the database and your password will be securely hashed. Once you are logged in you are able to view the blog posts and add a comment if you like. If you click on the 'dashboard' link you will be presented with a form to enter your own post information. Once you have submitted your post, it will render on the dashboard page where you will also be able to edit and delete your posts.
 
-https://jessicas-tech-blog-33ef3aaa807c.herokuapp.com/
+https://jessicas-tech-blog-33ef3aaa807c.herokuapp.com
 https://github.com/jaschmidt22/jessicas-tech-blog
 <img width="1087" alt="Screenshot 2024-02-22 140807" src="https://github.com/jaschmidt22/jessicas-tech-blog/assets/146290812/010cb9f0-73ff-445e-831f-b194a4e6e049">
 
